@@ -37,6 +37,8 @@ Record image-affecting changes to `manager/`, `worker/`, `copaw/`, `hermes/`, `o
 
 - **On-demand skill push off by default**: The controller-side local skill push (`spec.skills` via `push-worker-skills.sh`) is skipped by default (`HICLAW_LOCAL_SKILL_PUSH=true` re-enables it) 闁?the script reads the Manager's local `workers-registry.json`, which does not exist in the controller container, so the push always failed there. Remote (nacos) skills still push via Go.
 
+- **Worker CRD session/sandbox metadata fields**: `Worker.spec` gains optional `sessionId` (会话ID) and `sandboxId` (沙箱ID) string properties for associating a worker with an external session or sandbox instance. Both are pass-through metadata: stored on the CR and reflected in the applied-spec hash, with no controller-side behavior changes.
+
 **Bug Fixes**
 
 - **Script `log` fallback**: `hiclaw-env.sh` now defines a minimal `log()` when `base.sh` is absent (controller/worker images), so scripts fail on the real error instead of `log: command not found` (exit 127).

@@ -259,6 +259,15 @@ type WorkerSpec struct {
 	// Mounts is reserved for runtimes that provide custom dynamic mounts. It is
 	// not supported by the open-source pod backend.
 	Mounts []WorkerMountSpec `json:"mounts,omitempty"`
+
+	// SessionID associates this worker with an external session. Optional
+	// pass-through metadata; the controller stores it but does not interpret it.
+	SessionID string `json:"sessionId,omitempty"`
+
+	// SandboxID associates this worker with an external sandbox instance.
+	// Optional pass-through metadata; the controller stores it but does not
+	// interpret it.
+	SandboxID string `json:"sandboxId,omitempty"`
 }
 
 type WorkerVolumeSpec struct {

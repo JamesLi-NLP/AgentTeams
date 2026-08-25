@@ -307,6 +307,12 @@ spec:
                           ${self.kind} / ${self.namespace} are expanded by the
                           controller before the request reaches the provider.
                         x-kubernetes-preserve-unknown-fields: true
+                sessionId:
+                  type: string
+                  description: "Optional session ID associating this worker with an external session."
+                sandboxId:
+                  type: string
+                  description: "Optional sandbox ID associating this worker with an external sandbox instance."
             status:
               type: object
               properties:
